@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>hey, E 💅</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --hot:   #ff2d78;
+      --blush: #ffb6c1;
+      --bubblegum: #ff85b3;
+      --candy: #ffd6e7;
+      --cream: #fff0f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+      position: relative;
+      cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='28' font-size='28'>🖕</text></svg>") 16 16, auto;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, #ffb6c188 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #ff85b366 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #ffd6e7aa 0%, transparent 50%),
+        radial-gradient(ellipse at 10% 80%, #ff2d7822 0%, transparent 50%);
+      animation: meshShift 8s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    @keyframes meshShift {
+      from { filter: hue-rotate(0deg) brightness(1); }
+      to   { filter: hue-rotate(15deg) brightness(1.05); }
+    }
+
+    .confetti { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+    .confetti span {
+      position: absolute;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0%   { opacity: 1; transform: translateY(-40px) rotate(0deg) scale(1); }
+      100% { opacity: 0; transform: translateY(110vh) rotate(360deg) scale(0.5); }
+    }
+
+    .card {
+      position: relative; z-index: 2;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(18px);
+      border: 3px solid var(--blush);
+      border-radius: 40px;
+      padding: 52px 60px 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      box-shadow:
+        0 8px 48px #ff2d7830,
+        0 2px 0 #ffb6c1 inset,
+        0 -2px 0 #ffb6c1 inset;
+      animation: cardPop 0.7s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes cardPop {
+      from { opacity: 0; transform: scale(0.6) rotate(-4deg); }
+      to   { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    .hand-wrap {
+      position: relative;
+      width: 220px; height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ring {
+      position: absolute; inset: -24px;
+      border-radius: 50%;
+      border: 3px dashed var(--bubblegum);
+      animation: spin 12s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hand-wrap svg {
+      width: 180px;
+      filter: drop-shadow(0 6px 24px #ff2d7855);
+      animation: bounce 1.8s ease-in-out infinite;
+      position: relative; z-index: 2;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-16px) rotate(3deg); }
+    }
+
+    .sparkle {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: twinkle 2s ease-in-out infinite;
+      z-index: 3;
+    }
+    .sparkle:nth-child(2) { top: 10px;  left: 0px;   animation-delay: 0s; }
+    .sparkle:nth-child(3) { top: 0px;   right: 10px; animation-delay: 0.4s; }
+    .sparkle:nth-child(4) { bottom: 20px; left: -10px; animation-delay: 0.8s; }
+    .sparkle:nth-child(5) { bottom: 10px; right: -5px; animation-delay: 1.2s; }
+    @keyframes twinkle {
+      0%,100% { transform: scale(1) rotate(0deg);    opacity: 1; }
+      50%      { transform: scale(1.5) rotate(20deg); opacity: 0.6; }
+    }
+
+    .caption {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      color: var(--hot);
+      letter-spacing: 1px;
+      text-shadow:
+        3px 3px 0 #ffb6c1,
+        6px 6px 0 #ffd6e740;
+      animation: wobble 3s ease-in-out infinite;
+    }
+    @keyframes wobble {
+      0%,100% { transform: rotate(-2deg) scale(1); }
+      50%      { transform: rotate(2deg) scale(1.04); }
+    }
+
+    .sub {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--bubblegum);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .dots { display: flex; gap: 8px; align-items: center; }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--hot);
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; background: var(--bubblegum); }
+    .dot:nth-child(3) { animation-delay: 0.4s; background: var(--blush); }
+    @keyframes dotPulse {
+      0%,100% { transform: scale(1);   opacity: 1; }
+      50%      { transform: scale(1.6); opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confetti" id="confetti"></div>
+
+  <div class="card">
+
+    <div class="dots">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+
+    <div class="hand-wrap">
+      <div class="ring"></div>
+      <span class="sparkle">✨</span>
+      <span class="sparkle">💖</span>
+      <span class="sparkle">⭐</span>
+      <span class="sparkle">🌸</span>
+
+      <svg viewBox="0 0 160 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skinGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffcce0"/>
+            <stop offset="100%" stop-color="#ffaac8"/>
+          </linearGradient>
+          <linearGradient id="nailGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ff2d78"/>
+            <stop offset="100%" stop-color="#ff85b3"/>
+          </linearGradient>
+          <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#ff2d7840"/>
+          </filter>
+        </defs>
+
+        <!-- wrist -->
+        <rect x="42" y="210" width="76" height="64" rx="20" fill="url(#skinGrad)" filter="url(#softShadow)"/>
+        <!-- palm -->
+        <rect x="30" y="138" width="100" height="90" rx="22" fill="url(#skinGrad)" filter="url(#softShadow)"/>
+
+        <!-- pinky folded -->
+        <rect x="30" y="130" width="22" height="36" rx="11" fill="#ffaac8"/>
+        <!-- ring folded -->
+        <rect x="54" y="122" width="22" height="40" rx="11" fill="#ffb6c8"/>
+
+        <!-- MIDDLE FINGER (tall and proud) -->
+        <rect x="69" y="28" width="28" height="126" rx="14" fill="url(#skinGrad)" filter="url(#softShadow)"/>
+        <!-- fingertip dome -->
+        <ellipse cx="83" cy="30" rx="14" ry="16" fill="url(#skinGrad)"/>
+        <!-- nail -->
+        <rect x="74" y="36" width="18" height="28" rx="7" fill="url(#nailGrad)"/>
+        <!-- nail shine -->
+        <rect x="76" y="39" width="5" height="10" rx="3" fill="rgba(255,255,255,0.55)"/>
+        <!-- knuckle lines -->
+        <path d="M71 118 Q83 114 95 118" stroke="#ffaac8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M71 132 Q83 128 95 132" stroke="#ffaac8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+        <!-- index folded -->
+        <rect x="99" y="128" width="22" height="40" rx="11" fill="#ffaac8"/>
+
+        <!-- thumb tucked -->
+        <ellipse cx="34" cy="178" rx="17" ry="22" fill="#ffb6c8" transform="rotate(-18 34 178)"/>
+        <!-- thumb nail -->
+        <rect x="20" y="162" width="12" height="18" rx="5" fill="url(#nailGrad)" transform="rotate(-18 26 171)"/>
+
+        <!-- palm creases -->
+        <path d="M38 175 Q80 168 122 175" stroke="#ffaac8" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M38 195 Q80 188 122 195" stroke="#ffaac8" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- cute blush on palm -->
+        <ellipse cx="55" cy="210" rx="10" ry="6" fill="#ff85b3" opacity="0.35"/>
+        <ellipse cx="108" cy="210" rx="10" ry="6" fill="#ff85b3" opacity="0.35"/>
+      </svg>
+    </div>
+
+    <div class="caption">hey, E 💅</div>
+    <div class="sub">with love &nbsp;♡&nbsp; xo</div>
+
+    <div class="dots">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const emojis = ['💖','🌸','✨','💕','🎀','💗','⭐','🩷'];
+    const container = document.getElementById('confetti');
+    for (let i = 0; i < 28; i++) {
+      const s = document.createElement('span');
+      s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.top  = '-40px';
+      s.style.animationDuration = (5 + Math.random() * 8) + 's';
+      s.style.animationDelay    = (Math.random() * 10) + 's';
+      s.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
+      container.appendChild(s);
+    }
+  </script>
+</body>
+</html>
